@@ -1,0 +1,73 @@
+= stylesheet_link_tag 'jquery.lightbox-0.5'
+= javascript_include_tag 'jquery.lightbox-0.5'
+
+= render :partial => "/layouts/menu"
+.m_content
+  .form
+    %h3.heads View Reports
+    %h3 
+    = "#{@survey.name} Survey Summary"
+    %table#table.sortable.nomargin{ :cellpadding => 0 , :cellspacing => 0, :border => 0}
+      %thead
+        %tr
+          %th{ :width => 100 }
+            %h3 Survey Title
+
+          %th{ :width => 100 }
+            %h3 # Questions Asked
+
+          %th{ :width => 100 }
+            %h3 Total # of Responses
+          
+          %th{ :width => 100 }
+            %h3 Date Survey Completed
+            
+      %tbody
+        %tr
+          %td= @survey.name
+          %td= @survey.questions.size
+          %td= @survey.replies.size
+          %td= @survey.end_at.strftime("%b/%d %Y")
+          
+    %br
+    %table#table2.sortable.right{ :cellpadding => 0, :cellspacing => 0, :border => 0}
+      %thead
+        %tr
+          %th{ :width => 100  }
+            %h3 Question #
+        
+          
+          %th{ :width => 120 }
+            %h3 Type
+        
+      %tbody
+        - @survey.questions.each_with_index do |q, i|
+          %tr
+            %td.right= i + 1
+          
+            %td.right= q.question_type.name
+    %br
+    %h3 Demographic Constraints:                           
+    %table#table3.sortable.nomargin{ :cellpadding => 0, :cellspacing => 0, :border => 0}
+      %thead
+        %tr
+          %th{ :width => 50 }
+            %h3 Restriction
+          
+          %th{ :width => 120 }
+            %h3 Value
+      
+      %tbody
+        %td= @survey.geographic_locations
+    <!--    - @survey.geographic_locations.each_with_index do |q, i| -->
+    <!--     %tr -->
+    <!--        %td= q.restrictions.type -->
+    <!--       %td= link_to q.restrictions.value -->   
+    <!--   .cls -->
+        
+    <!--     = link_to_remote "q.restrictions.value", :url => new_restriction_path, :method => :get, :html => { :class => "href href_la" } -->
+  = render :partial => "/surveys/geographic_location" , :locals => { :form => form, :survey => @survey }
+.cls  
+= sortable_table_js
+  
+        

@@ -1,0 +1,62 @@
+# == Schema Information
+# Schema version: 20100308160716
+#
+# Table name: users
+#
+#  id                                         :integer(4)      not null, primary key
+#  login                                      :string(40)
+#  name                                       :string(100)     default("")
+#  email                                      :string(100)
+#  crypted_password                           :string(40)
+#  created_at                                 :datetime
+#  updated_at                                 :datetime
+#  birthdate                                  :date
+#  gender                                     :string(255)
+#  password_salt                              :string(255)
+#  persistence_token                          :string(255)
+#  perishable_token                           :string(255)
+#  active                                     :boolean(1)
+#  type                                       :string(255)     default("Consumer")
+#  income_id                                  :integer(4)
+#  zip_code                                   :string(255)
+#  race_id                                    :integer(4)
+#  education_id                               :integer(4)
+#  occupation_id                              :integer(4)
+#  martial_status_id                          :integer(4)
+#  sort_id                                    :integer(4)      default(1), not null
+#  device_id                                  :string(255)
+#  last_warned_at                             :datetime
+#  get_geographical_location_targeted_surveys :boolean(1)
+#
+
+quentin:
+  login:                     quentin
+  email:                     quentin@example.com
+  salt:                      356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
+  crypted_password:          11dbf7b243f49f3a963c04af4dd72c5221387025 # 'monkey'
+  created_at:                <%= 5.days.ago.to_s :db  %>
+  remember_token_expires_at: <%= 1.days.from_now.to_s %>
+  remember_token:            77de68daecd823babbb58edb1c8e14d7106e83bb
+  activation_code:           
+  activated_at:              <%= 5.days.ago.to_s :db %>
+      
+aaron:
+  login:                     aaron
+  email:                     aaron@example.com
+  salt:                      da4b9237bacccdf19c0760cab7aec4a8359010b0 # SHA1('1')
+  crypted_password:          d80145d0f8747943446863e91bf41ee35aee2610 # 'monkey'
+  created_at:                <%= 1.days.ago.to_s :db %>
+  remember_token_expires_at: 
+  remember_token:            
+  activation_code:           <%= Digest::SHA1.hexdigest(Time.now.to_s) %>
+  activated_at:              
+
+old_password_holder:
+  login:                     old_password_holder
+  email:                     salty_dog@example.com
+  salt:                      7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+  crypted_password:          00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+  created_at:                <%= 1.days.ago.to_s :db %>
+  activation_code:           
+  activated_at:              <%= 5.days.ago.to_s :db %>
+

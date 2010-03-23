@@ -1,0 +1,13 @@
+%p
+  - fields_for "survey[questions_attributes][]", question do |form|
+    %label 
+      Question Text 
+      %small (140 Characters)
+    = form.hidden_field :question_type_id, :value => question.question_type_id
+    = form.label :name, "Question"
+    = form.text_field :name
+    
+    = form.label :description
+    = form.text_field :description
+    - if defined?(question_id) && question_id
+      = form.hidden_field :id, :value => question_id

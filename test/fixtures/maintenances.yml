@@ -1,0 +1,21 @@
+# == Schema Information
+# Schema version: 20100308160716
+#
+# Table name: maintenances
+#
+#  id         :integer(4)      not null, primary key
+#  start      :datetime
+#  duration   :integer(4)
+#  created_at :datetime
+#  updated_at :datetime
+#  passed     :boolean(1)
+#  end        :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value

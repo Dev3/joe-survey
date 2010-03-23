@@ -1,0 +1,20 @@
+%div{:class => 'form lar1'}
+  %h3.heads1 Pricing Administration
+
+  %p.normal
+    %label Pricing
+    
+    = select_tag :package, options_for_select(@packages.collect{|n|n.name}, params[:package]), {:onChange => 'loadSelectedPackage();'}
+    
+    = link_to 'Create New Package', '#dialog', :name => 'modal'
+    
+  #package_form
+    = render :partial => 'admin/packages/update_form'
+
+= render :partial => 'admin/packages/pricing/date_picker_scripts'
+
+#mask
+
+#boxes
+  #dialog.window
+    = render :partial => 'new'      

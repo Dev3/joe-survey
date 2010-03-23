@@ -1,0 +1,16 @@
+= image_tag @survey.graph
+.cls          
+- @survey.questions.each do |question|
+  %table#table{ :style => 'background:none !important;', :cellpadding => 0, :cellspacing => 0, :class => "sortable one" }
+    %thead
+      %tr
+        %th
+          %h3 Respondent #
+        %th
+          %h3= question.name
+    %tbody
+      = render_answers_for(question)
+            
+            
+
+          

@@ -1,0 +1,29 @@
+# == Schema Information
+# Schema version: 20100308160716
+#
+# Table name: warnings
+#
+#  id              :integer(4)      not null, primary key
+#  iphone_version  :string(255)
+#  warning         :text
+#  warn_preference :string(255)
+#  active          :boolean(1)      default(TRUE)
+#  added_by        :integer(4)
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value
+one:
+
+  warning:           I-phone client is older.
+  warn_preference:   I-phone client is older.
+  active:            true
+  iphone_version:    0.5
+  

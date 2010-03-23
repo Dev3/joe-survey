@@ -1,0 +1,27 @@
+development:
+  adapter: mysql
+  database: joemetric_dev
+  username: root
+  password: jaigurudev
+  host: localhost
+test: &TEST
+  adapter: mysql
+  database: joemetric_dev
+  username: root
+  password: jaigurudev
+  host: localhost
+staging:
+  adapter: mysql
+  database: joemetric_dev
+  username: root
+  password: jaigurudev
+  host: localhost
+production:
+  adapter: mysql
+  database: joemetric_dev
+  username: root
+  password: jaigurudev
+  host: localhost
+
+cucumber:
+  <<: *TEST

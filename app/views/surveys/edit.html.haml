@@ -1,0 +1,33 @@
+= render :partial => "/layouts/menu"
+.main_content
+  = render :partial => "/surveys/preview_tabs"
+  .form
+    - form_remote_for @survey, :html => {:id => 'survey_form'}  do |form|
+      %h3.heads Edit a Survey
+      #errors
+
+      = render :partial => "/surveys/form_general", :locals => { :form => form, :survey => @survey }
+      = form.hidden_field :id
+      = form.hidden_field :package_id
+      .rounded
+        .top
+        .form_content1
+          %h4 Questions
+          = render :partial => "/surveys/form_questions", :locals => { :form => form, :survey => @survey }
+        .bottom
+      
+      .rounded
+        .top
+        .form_content1
+          = render :partial => "/surveys/form_distribution", :locals => { :form => form, :survey => @survey }
+          = render :partial => "/surveys/form_restriction" , :locals => { :form => form, :survey => @survey }
+        .bottom
+      
+      = link_to_function "Activate", ajax_submit(activate_surveys_url), :class => "button button_la", :id => "paypal_btn"
+      
+      = form.submit "Update", :class => "button button_gr"
+
+#package_details
+  = render :partial => 'pricing_details', :locals => { :package => @survey.package}
+
+= javascript_tag('updatePricing();')

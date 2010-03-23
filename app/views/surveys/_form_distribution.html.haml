@@ -1,0 +1,22 @@
+%h4 
+  Survey Distribution
+  %span Available
+
+%p.net{:align => "right"}
+  = text_field_tag :demographic_targets, '', :style => 'text-align:center;', :readonly => true
+  %label
+  %b Joe Network: &nbsp;&nbsp;&nbsp;
+  %p.cls
+
+= form.label "Maximum # of respondents"
+  
+%p.corr
+  = form.text_field :responses, :value => @survey.try(:responses) ? @survey.responses : 1, :class => "small_l"
+  %p.cls
+
+%br
+  
+= form.label :end_at
+%p.corr
+  = form.date_select :end_at, :order => [ :month, :day, :year ], :start_year => Time.now.year
+  %p.cls

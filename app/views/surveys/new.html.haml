@@ -1,0 +1,41 @@
+= render :partial => "/layouts/menu"
+.main_content
+  = render :partial => "/surveys/preview_tabs"
+  .form
+    - form_remote_for @survey, :html => {:id => 'survey_form'} do |form|
+  
+      = hidden_field_tag 'package', params[:package] || @package.code
+      = form.hidden_field :package_id, :value => @package.id
+  
+      %h3.heads Create a Survey
+      .quick_select{ :style => "margin-top: -58px" }
+        Quick Create - Copy
+        %br
+        = select :surveys, :id, Survey.by(current_user).collect {|s| [ truncate(s.name, 12), s.id ] }, { :include_blank => 'Select' }
+        = observe_field "surveys_id", :url => copy_surveys_path, :with => "'id=' + value", :complete => 'updatePricing();'
+      #errors
+      = render :partial => "/surveys/form_general", :locals => { :form => form, :survey => @survey }
+        
+      .rounded
+        .top
+        .form_content1
+          %h4 Questions
+          = render :partial => "/surveys/form_questions", :locals => { :form => form, :survey => @survey }
+        .bottom
+      
+      .rounded
+        .top
+        .form_content1
+          
+          = render :partial => "/surveys/form_distribution", :locals => { :form => form, :survey => @survey }
+          = render :partial => "/surveys/form_restriction" , :locals => { :form => form, :survey => @survey }
+        .bottom
+      
+      = form.submit "Save for Later", :class => "button button_la"
+      
+      = link_to_function "Purchase via Paypal", ajax_submit(activate_surveys_url), :class => "button button_la", :id => "paypal_btn"
+
+#package_details
+  = render :partial => 'pricing_details', :locals => { :package => @package}
+
+=javascript_tag("updateButtonText();")  

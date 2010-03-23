@@ -1,0 +1,27 @@
+.form
+  %h3.heads Create a new user
+  .rounded
+    .top
+    .form_content
+      - form_for :user, :url => users_path do |form|
+        = form.error_messages
+        
+        = form.label :login
+        = form.text_field :login
+        = form.label :name
+        = form.text_field :name
+        = form.label :email
+        = form.text_field :email
+        = form.hidden_field :type, :value => 'User'
+        = form.label :password
+        = form.password_field :password
+        = form.label :password_confirmation
+        = form.password_field :password_confirmation
+        
+        
+        %p.btns{ :align => "right" }
+          = link_to "Cancel", login_path, :class => "button button_gr"
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          = form.submit "OK", :class => "button button_bl"
+    %br
+    .signin_bottom

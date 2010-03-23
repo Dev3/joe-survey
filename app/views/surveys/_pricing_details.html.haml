@@ -1,0 +1,38 @@
+.survey_details
+  .std_sur
+    %h4
+      = package.name
+      Package
+    Includes:
+    %br
+    = package.total_responses
+    responses
+    %br
+    %b
+      - package.try(:questions_info).each do |q|
+        %i 
+          = q.skip_info
+          %br
+    %br
+    Base Cost
+    = package.base_cost.us_dollar
+  .sur_details{:id => 'pricing_details'}
+  .total
+    %br
+    .total_bar
+      %strong
+        Total
+        %em{:id => 'total_amount'} 
+          = package.base_cost.us_dollar
+      %b &nbsp;&nbsp;
+      %br
+      %center
+        = link_to_function 'Promotion Code, Gift Certificate', 'showForm()', :style => 'font-size:10px;', :class => 'black_link', :name => 'modal', :title => 'Click here to use Promotion code, Gift Certificate'
+    .cls
+.cls
+
+#mask
+
+#boxes
+  #dialog.window 
+    = render :partial => 'surveys/promotion_code_form'

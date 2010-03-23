@@ -1,0 +1,9 @@
+= render :partial => "/layouts/menu"
+.m_content
+  .form
+    %h3.heads= @survey.name
+    .survey_type
+      %ul.survey
+        %li.selected
+          = render :partial => 'surveys/graph'  
+.cls

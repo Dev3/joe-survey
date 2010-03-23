@@ -1,0 +1,5 @@
+unless (params[:survey] == 'Select' || params[:survey_range] == 'Nothing')
+  page.replace_html 'survey_distribution', :partial => 'admin/dashboards/survey_distribution/results'
+else
+  page.replace_html 'survey_distribution', 'Please select options from both the lists'
+end

@@ -1,0 +1,17 @@
+%h4.heads2 Non Profit Organizations Earnings
+.demo_dis
+  .show
+    #nonprofit_organization_details_download_links
+      - if @results
+        = render :partial => 'admin/dashboards/nonprofit_organization_details/links'
+  .segment_by
+    %b Range:
+    = nonprofit_org_time_range
+    = observe_field 'time_range', :url => nonprofit_organization_details_dashboard_path, :with => "'time_range=' + $('#time_range option:selected').val()"
+  .cls
+  %br
+  %br
+  #nonprofit_organization_details
+    - if @results
+      = render :partial => 'admin/dashboards/nonprofit_organization_details/results'
+%br

@@ -1,0 +1,14 @@
+= init_lightbox(photo_upload.id)
+%div{:id => "gallery_#{photo_upload.id}"}
+  .cls
+  .ques
+    - unless photo_upload.description.blank?
+      .que_des{ :style => "margin-top: 0px; height:auto !important;" }= photo_upload.description
+    .que_details
+      %table.sortable.nomargin{ :cellspacing => 0, :cellpadding => 0, :border => 0, :width => 540 }
+        %thead
+          %tr
+            %th{ :colspan => "4" }
+              %h3 Individual Responses
+        %tbody
+          = photo_responses(@survey.answers.by_question(photo_upload))

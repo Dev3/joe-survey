@@ -1,0 +1,38 @@
+%h1 Manage Account
+
+- form_for :user, :url => user_path(object), :html => { :method => :put } do |form|
+  
+  = form.error_messages
+  
+  %h2 User Information
+    
+    %p 
+      = form.label :name
+      = form.select :name
+    
+    %p 
+      = form.label :income
+      = form.select :income_id, income_options
+      
+    %p
+      = form.label :zip_code
+      = form.text_field :zip_code
+  
+  %h2 Change Password
+  
+  %fieldset#change_password
+    %p
+      = form.label :old_password
+      = form.password_field :old_password
+  
+    %p
+      = form.label :new_password
+      = form.password_field :password
+    
+    %p
+      = form.label :password_confirmation
+      = form.password_field :password_confirmation
+      
+    
+  .submit#submit
+    = form.submit "Update"

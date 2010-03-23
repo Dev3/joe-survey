@@ -1,0 +1,34 @@
+# == Schema Information
+# Schema version: 20100308160716
+#
+# Table name: package_question_types
+#
+#  id         :integer(4)      not null, primary key
+#  name       :string(255)
+#  info       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+standard_question:
+  id: 1
+  name: Standard Questions 
+  info: T/F, MC, Free Text
+
+premium_question:
+  id: 2
+  name: Premium Questions
+  info: Photo response, GPS location
+
+standard_demographic_restriction:
+  id: 3
+  name: Standard Demographic Restrictions
+  info: Profile data, Time
+  
+premium_demographic_restriction:
+  id: 4
+  name: Premium Demographic Restrictions
+  info: Location, Previous survey respones
+ 

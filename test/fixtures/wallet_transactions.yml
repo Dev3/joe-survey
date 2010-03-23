@@ -1,0 +1,24 @@
+# == Schema Information
+# Schema version: 20091012054719
+#
+# Table name: wallet_transactions
+#
+#  id          :integer(4)      not null, primary key
+#  wallet_id   :integer(4)
+#  amount      :float
+#  description :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  wallet_id: 1
+  amount: 1.5
+  description: MyString
+
+two:
+  wallet_id: 1
+  amount: 1.5
+  description: MyString
